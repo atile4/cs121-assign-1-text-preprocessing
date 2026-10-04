@@ -4,13 +4,10 @@ def tokenize(path : str) -> list[str]:
     try:
         with open(path, 'r', encoding='utf-8') as file:
             for line in file:
-                curr_line = line
-
                 # tokenize curr line
-                cleaned = ''.join(c if c.isalnum() else ' ' for c in curr_line)
-                words = cleaned.split()
+                cleaned = ''.join(c if c.isalnum() else ' ' for c in line.lower())
 
-                for word in words: tokens.append(word.lower().strip())
+                tokens.extend(cleaned.split())
 
     except:
         raise FileNotFoundError("Could not find file")
