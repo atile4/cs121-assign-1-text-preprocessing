@@ -17,10 +17,7 @@ def tokenize(path : str) -> list[str]:
 def computeWordFrequencies(tokens : list[str]) -> dict[str, int] :
     result = {}
     for token in tokens:
-        if token not in result.keys():
-            result[token] = 1
-        else:
-            result[token] += 1
+        result[token] = result.get(token, 0) + 1
 
     result = dict(sorted(result.items(), key=lambda item: (-item[1], item[0])))
 
