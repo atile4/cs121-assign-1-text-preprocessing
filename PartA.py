@@ -13,7 +13,12 @@ def tokenize(path : str) -> list[str]:
         with open(path, 'r', encoding='utf-8') as file:
             for line in file:
                 # tokenize curr line
-                cleaned = ''.join(c if c.isalnum() else ' ' for c in line.lower())
+
+                # to account for possessive/shortened words
+                line = line.lower().replace("'", "") 
+
+                # replace special characters with blank space
+                cleaned = ''.join(c if c.isalnum() and c.isascii() else ' ' for c in line)
 
                 # add tokens in the current line to tokens list
                 tokens.extend(cleaned.split())

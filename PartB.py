@@ -18,6 +18,8 @@ they will be negligble.
 def compare_tokens():
     flag = True
     tokens_a = []
+    tokens_b = []
+
     path1 = input("Please input the first file's path: ")
     while (flag):
         try:
