@@ -24,7 +24,7 @@ def compare_tokens():
             tokens_a = tokenize(path1)
             flag = False
         except FileNotFoundError:
-            path1 = input("Invalid path. Please try again.")
+            path1 = input("Invalid path. Please try again: ")
 
     flag = True
     path2 = input("Please input the second file's path: ")
@@ -33,7 +33,7 @@ def compare_tokens():
             tokens_b = tokenize(path2)
             flag = False
         except:
-            path2 = input("Invalid path. Please try again.")
+            path2 = input("Invalid path. Please try again: ")
 
     count = len(set(tokens_a).intersection(tokens_b))
 
