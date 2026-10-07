@@ -3,7 +3,6 @@ tokenize(path : str) -> list[str]
 
 This function runs in O(n) time, where n is the number of lines in the file. 
 
-
 """
 def tokenize(path : str) -> list[str]:
     # list containing all resulting tokens

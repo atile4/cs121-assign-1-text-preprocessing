@@ -20,6 +20,7 @@ def compare_tokens():
     tokens_a = []
     tokens_b = []
 
+    # retrieve file inputs and tokenize the text files
     path1 = input("Please input the first file's path: ")
     while (flag):
         try:
@@ -34,8 +35,32 @@ def compare_tokens():
         try:
             tokens_b = tokenize(path2)
             flag = False
-        except:
+        except FileNotFoundError:
             path2 = input("Invalid path. Please try again: ")
+
+    # count intersection between the two token lists
+    count = len(set(tokens_a).intersection(tokens_b))
+
+    return count
+
+
+"""
+This function is NOT part of my submission, it's only here to time my function.
+This is a COPY of the compare_tokens() function where paths are hardcoded to allow
+for a more accurate timed test.
+"""
+def compare_tokens_timed():
+    tokens_a = []
+    tokens_b = []
+
+    path1 = "sample1.txt"
+    path2 = "sample2.txt"
+
+    try:
+        tokens_a = tokenize(path1)
+        tokens_b = tokenize(path2)
+    except:
+        raise Exception("Error in tokenizing")
 
     count = len(set(tokens_a).intersection(tokens_b))
 
