@@ -1,7 +1,9 @@
 """
 tokenize(path : str) -> list[str]
 
-This function runs in O(n) time, where n is the number of lines in the file. 
+This function runs in O(n * m) time, where 
+n is the number of lines in the file and m is the average
+number of characters in each line. 
 
 """
 def tokenize(path : str) -> list[str]:
