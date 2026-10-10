@@ -1,34 +1,31 @@
 from PartA import tokenize
+import sys
+import os
 
 """
 This function runs in O(n + m), where n is the number of characters in
 the first file after it's inputted and m is the number of characters in 
 the second file. 
 """
-def compare_tokens():
-    flag = True
-    tokens_a = []
-    tokens_b = []
-
-    # retrieve file inputs and tokenize the text files
-    path1 = input("Please input the first file's path: ")
-    while (flag):
-        try:
-            tokens_a = tokenize(path1)
-            flag = False
-        except FileNotFoundError:
-            path1 = input("Invalid path. Please try again: ")
-
-    flag = True
-    path2 = input("Please input the second file's path: ")
-    while (flag):
-        try:
-            tokens_b = tokenize(path2)
-            flag = False
-        except FileNotFoundError:
-            path2 = input("Invalid path. Please try again: ")
+def compare_tokens(path1, path2):
+    # tokenize the text files
+    tokens_a = tokenize(path1)
+    tokens_b = tokenize(path2)
 
     # count intersection between the two token lists
-    count = len(set(tokens_a).intersection(tokens_b))
+    return len(set(tokens_a).intersection(tokens_b))
 
-    return count
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Error: Use the format: python PartB.py <file1.txt> <file2.txt>")
+        sys.exit(1)
+
+    path1, path2 = sys.argv[1], sys.argv[2]
+
+    for path in (path1, path2):
+        if not os.path.isfile(path):
+            print(f"Error: file not found: {path}")
+            sys.exit(1)
+
+    print(compare_tokens(path1, path2))
